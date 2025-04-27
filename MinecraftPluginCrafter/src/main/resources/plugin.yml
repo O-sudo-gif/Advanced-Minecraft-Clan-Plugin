@@ -1,0 +1,92 @@
+name: ClanPlugin
+version: 1.0.0
+main: com.minecraft.clanplugin.ClanPlugin
+api-version: 1.16
+description: A plugin for creating and managing player clans with advanced features
+commands:
+  clan:
+    description: Main command for clan management
+    usage: /<command> [create|join|leave|info|invite|kick|promote|demote|sethome|home|list|ally|unally|enemy|unenemy|color|armor|nametag|gui|territory|economy|war|level|achievements|skills|reputation|map|help]
+    aliases: [c]
+  c:
+    description: Send a message to your clan's chat
+    usage: /<command> <message>
+  territory:
+    description: Commands for territory management
+    usage: /<command> [map|dynamicmap|info|claim|unclaim|list]
+    permission: clan.territory
+  economy:
+    description: Commands for clan economy management
+    usage: /<command> [balance|deposit|withdraw|transfer|tax|collect]
+    permission: clan.economy
+  war:
+    description: Commands for clan war management
+    usage: /<command> [declare|status|surrender|stats|leaderboard]
+    permission: clan.war
+  level:
+    description: Commands for clan leveling and progression
+    usage: /<command> [info|benefits|progress]
+    permission: clan.level
+  achievements:
+    description: Commands for clan achievements
+    usage: /<command> [list|info|progress]
+    permission: clan.achievements
+  skills:
+    description: Commands for clan member skills
+    usage: /<command> [list|info|upgrade|tree|specialize|reset]
+    permission: clan.skills
+  reputation:
+    description: Commands for clan reputation
+    usage: /<command> [info|leaderboard|effects]
+    permission: clan.reputation
+  map:
+    description: Commands for territory mapping
+    usage: /<command> [show|radius|info]
+    permission: clan.map
+
+permissions:
+  clan.territory:
+    description: Allows usage of territory commands
+    default: true
+  clan.economy:
+    description: Allows usage of economy commands
+    default: true
+  clan.war:
+    description: Allows usage of war commands
+    default: true
+  clan.level:
+    description: Allows usage of level commands
+    default: true
+  clan.achievements:
+    description: Allows usage of achievement commands
+    default: true
+  clan.skills:
+    description: Allows usage of skill commands
+    default: true
+  clan.reputation:
+    description: Allows usage of reputation commands
+    default: true
+  clan.map:
+    description: Allows usage of map commands
+    default: true
+  clan.admin.territory:
+    description: Allows usage of territory admin commands
+    default: op
+  clan.admin.territory.bypass:
+    description: Allows bypassing territory restrictions
+    default: op
+  clan.admin.skills.reset:
+    description: Allows resetting skill trees
+    default: op
+  clan.admin.level:
+    description: Allows modifying clan levels
+    default: op
+  clan.visual.armor:
+    description: Allows toggling clan-colored armor
+    default: true
+  clan.visual.nametag:
+    description: Allows refreshing clan nametags
+    default: true
+  clan.territory.dynamicmap:
+    description: Allows usage of dynamic territory maps
+    default: true
