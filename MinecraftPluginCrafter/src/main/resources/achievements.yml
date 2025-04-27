@@ -1,0 +1,145 @@
+# ClanPlugin Achievement Configuration
+# This file defines achievements that can be earned by clan members
+
+# General achievements
+first_clan:
+  name: "Founding Father"
+  description: "Create your first clan"
+  category: GENERAL
+  difficulty: EASY
+  exp_reward: 100
+  rep_reward: 10
+    
+recruit_members:
+  name: "Recruitment Drive"
+  description: "Have at least 5 members in your clan"
+  category: GENERAL
+  difficulty: EASY
+  exp_reward: 200
+  rep_reward: 20
+    
+clan_master:
+  name: "Clan Master"
+  description: "Reach level 5 with your clan"
+  category: PROGRESSION
+  difficulty: HARD
+  exp_reward: 1000
+  rep_reward: 100
+
+# Territory achievements
+first_claim:
+  name: "Stake Your Claim"
+  description: "Claim your first territory"
+  category: TERRITORY
+  difficulty: EASY
+  exp_reward: 100
+  rep_reward: 10
+    
+territory_empire:
+  name: "Territorial Empire"
+  description: "Own 20 territory chunks"
+  category: TERRITORY
+  difficulty: HARD
+  exp_reward: 800
+  rep_reward: 80
+    
+fortified:
+  name: "Fortified"
+  description: "Place 3 level 3 flags in your territory"
+  category: TERRITORY
+  difficulty: MEDIUM
+  exp_reward: 500
+  rep_reward: 50
+
+# War achievements
+first_blood:
+  name: "First Blood"
+  description: "Win your first clan war"
+  category: WAR
+  difficulty: MEDIUM
+  exp_reward: 300
+  rep_reward: 30
+    
+war_machine:
+  name: "War Machine"
+  description: "Win 5 clan wars"
+  category: WAR
+  difficulty: HARD
+  exp_reward: 1000
+  rep_reward: 100
+    
+legendary_warrior:
+  name: "Legendary Warrior"
+  description: "Get 50 kills in clan wars"
+  category: WAR
+  difficulty: LEGENDARY
+  exp_reward: 2000
+  rep_reward: 200
+
+# Alliance achievements
+first_alliance:
+  name: "Diplomatic Relations"
+  description: "Form your first alliance with another clan"
+  category: ALLIANCE
+  difficulty: EASY
+  exp_reward: 150
+  rep_reward: 15
+    
+alliance_network:
+  name: "Alliance Network"
+  description: "Have alliances with 3 different clans"
+  category: ALLIANCE
+  difficulty: MEDIUM
+  exp_reward: 500
+  rep_reward: 50
+
+# Economy achievements
+economic_power:
+  name: "Economic Power"
+  description: "Reach 10,000 in clan treasury"
+  category: ECONOMY
+  difficulty: HARD
+  exp_reward: 800
+  rep_reward: 80
+    
+tax_collector:
+  name: "Tax Collector"
+  description: "Collect taxes 10 times"
+  category: ECONOMY
+  difficulty: MEDIUM
+  exp_reward: 400
+  rep_reward: 40
+
+# Reputation achievements
+respected:
+  name: "Respected"
+  description: "Reach 'Respected' reputation level"
+  category: REPUTATION
+  difficulty: MEDIUM
+  exp_reward: 400
+  rep_reward: 40
+    
+legendary_status:
+  name: "Legendary Status"
+  description: "Reach 'Legendary' reputation level"
+  category: REPUTATION
+  difficulty: LEGENDARY
+  exp_reward: 2000
+  rep_reward: 200
+
+# Skill achievements
+skill_master:
+  name: "Skill Master"
+  description: "Max out 3 different skills"
+  category: SKILLS
+  difficulty: HARD
+  exp_reward: 1500
+  rep_reward: 150
+    
+specialist:
+  name: "Specialist"
+  description: "Complete a skill specialization"
+  category: SKILLS
+  difficulty: MEDIUM
+  exp_reward: 500
+  rep_reward: 50

@@ -1,0 +1,250 @@
+# Clan Shop Configuration
+# This file controls the shop items, categories, and pricing
+
+# Shop display settings
+display:
+  title: "Clan Shop"
+  currency_symbol: "$"
+  format_prices: true
+
+# Shop categories configuration
+categories:
+  flags:
+    name: "Clan Flags"
+    description: "Custom flags and banners for your clan"
+    icon: WHITE_BANNER
+    display_order: 1
+  
+  armor:
+    name: "Clan Armor"
+    description: "Special armor for your clan members"
+    icon: DIAMOND_CHESTPLATE
+    display_order: 2
+  
+  upgrades:
+    name: "Clan Upgrades"
+    description: "Permanent upgrades for your clan"
+    icon: NETHER_STAR
+    display_order: 3
+  
+  special:
+    name: "Special Items"
+    description: "Unique items with special abilities"
+    icon: ENDER_CHEST
+    display_order: 4
+
+# Shop items configuration
+items:
+  # Flag items
+  basic_flag:
+    name: "Basic Clan Flag"
+    description: "A standard flag with your clan's color"
+    category: flags
+    price: 500.0
+    material: WHITE_BANNER
+    quantity: 1
+    min_clan_level: 1
+    clan_purchase: true
+    unique: false
+  
+  custom_flag:
+    name: "Custom Clan Flag"
+    description: "A customizable flag with patterns"
+    category: flags
+    price: 1500.0
+    material: WHITE_BANNER
+    quantity: 1
+    min_clan_level: 2
+    clan_purchase: true
+    unique: false
+  
+  war_banner:
+    name: "War Banner"
+    description: "A special banner that boosts clan members during wars"
+    category: flags
+    price: 3000.0
+    material: RED_BANNER
+    quantity: 1
+    min_clan_level: 3
+    clan_purchase: true
+    unique: false
+    properties:
+      war_boost: 10
+      durability: 7
+  
+  # Armor items
+  standard_armor:
+    name: "Standard Clan Armor"
+    description: "Basic armor with your clan's color"
+    category: armor
+    price: 1000.0
+    material: IRON_CHESTPLATE
+    quantity: 1
+    min_clan_level: 1
+    clan_purchase: true
+    unique: false
+  
+  elite_armor:
+    name: "Elite Clan Armor"
+    description: "Enhanced armor with your clan's color and effects"
+    category: armor
+    price: 3000.0
+    material: DIAMOND_CHESTPLATE
+    quantity: 1
+    min_clan_level: 3
+    clan_purchase: true
+    unique: false
+    properties:
+      protection_bonus: 2
+      durability_bonus: 3
+  
+  netherite_armor:
+    name: "Netherite Clan Armor"
+    description: "Top-tier armor with your clan's color and special effects"
+    category: armor
+    price: 10000.0
+    material: NETHERITE_CHESTPLATE
+    quantity: 1
+    min_clan_level: 5
+    clan_purchase: true
+    unique: false
+    properties:
+      protection_bonus: 4
+      durability_bonus: 5
+      effect_resistance: true
+  
+  # Upgrades
+  member_slot:
+    name: "Additional Member Slot"
+    description: "Increases max clan members by 1"
+    category: upgrades
+    price: 2000.0
+    material: PLAYER_HEAD
+    quantity: 1
+    min_clan_level: 1
+    clan_purchase: true
+    unique: true
+    properties:
+      slot_increase: 1
+  
+  territory_slot:
+    name: "Additional Territory Slot"
+    description: "Increases max clan territories by 1"
+    category: upgrades
+    price: 3000.0
+    material: GRASS_BLOCK
+    quantity: 1
+    min_clan_level: 1
+    clan_purchase: true
+    unique: true
+    properties:
+      territory_increase: 1
+  
+  income_boost:
+    name: "Income Boost"
+    description: "Increases clan income by 10%"
+    category: upgrades
+    price: 5000.0
+    material: GOLD_INGOT
+    quantity: 1
+    min_clan_level: 2
+    clan_purchase: true
+    unique: true
+    properties:
+      income_boost: 10
+  
+  skill_boost:
+    name: "Skill Experience Boost"
+    description: "Increases skill XP gain by 15% for all members"
+    category: upgrades
+    price: 7500.0
+    material: EXPERIENCE_BOTTLE
+    quantity: 1
+    min_clan_level: 3
+    clan_purchase: true
+    unique: true
+    properties:
+      skill_boost: 15
+  
+  # Special items
+  raid_beacon:
+    name: "Raid Beacon"
+    description: "Signals a clan raid and provides buffs"
+    category: special
+    price: 8000.0
+    material: BEACON
+    quantity: 1
+    min_clan_level: 4
+    clan_purchase: true
+    unique: false
+    properties:
+      duration: 30
+      buff_strength: 1
+      buff_resistance: 1
+  
+  teleport_crystal:
+    name: "Teleport Crystal"
+    description: "Teleport to your clan's territories"
+    category: special
+    price: 5000.0
+    material: ENDER_PEARL
+    quantity: 1
+    min_clan_level: 3
+    clan_purchase: false
+    unique: false
+    properties:
+      cooldown: 3600
+      charges: 5
+  
+  clan_chest:
+    name: "Portable Clan Chest"
+    description: "Access your clan's shared storage anywhere"
+    category: special
+    price: 12000.0
+    material: ENDER_CHEST
+    quantity: 1
+    min_clan_level: 5
+    clan_purchase: true
+    unique: true
+    properties:
+      slots: 27
+      cooldown: 1800
+
+# Discount configuration
+discounts:
+  # Reputation-based discounts
+  reputation_discount:
+    enabled: true
+    discount_per_100_rep: 2.0  # 2% discount per 100 reputation points
+    max_discount: 15.0         # Maximum discount percentage
+  
+  # Clan level discounts
+  level_discount:
+    enabled: true
+    discount_per_level: 1.0     # 1% discount per clan level
+    max_discount: 10.0          # Maximum discount percentage
+  
+  # Special event discounts
+  events:
+    weekend:
+      enabled: false
+      discount: 10.0            # 10% discount on weekends
+    
+    holiday:
+      enabled: false
+      discount: 20.0            # 20% discount during holidays
+
+# Stock limitations for certain items
+stock:
+  global_limitations:
+    enabled: false              # Whether to enable global stock limitations
+    restock_interval: 86400     # Time in seconds between restocks (24 hours)
+  
+  limited_items:
+    raid_beacon:
+      max_stock: 5
+      restock_amount: 1         # Amount to restock per interval
+    
+    teleport_crystal:
+      max_stock: 20
+      restock_amount: 5

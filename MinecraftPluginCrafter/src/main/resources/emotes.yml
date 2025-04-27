@@ -1,0 +1,36 @@
+# ClanPlugin Emote Configuration
+# This file contains custom emote shortcuts for chat
+
+# Global emotes available to all players
+global:
+  smile: "☺"
+  happy: "😄"
+  sad: "😢"
+  grin: "😁"
+  frown: "☹"
+  wink: "😉"
+  laugh: "😂"
+  hmm: "🤔"
+  cool: "😎"
+  heart: "❤"
+  star: "★"
+  music: "♫"
+  check: "✓"
+  x: "✗"
+  sword: "⚔"
+  shield: "🛡"
+  potion: "🧪"
+  bow: "🏹"
+  diamond: "💎"
+  gold: "🪙"
+  tnt: "💣"
+  creeper: "👾"
+  pickaxe: "⛏"
+
+# Clan-specific emotes
+clans:
+  # Example clan emotes
+  # Replace 'ClanName' with your clan's name
+  # ClanName:
+  #   emblem: "⚜"
+  #   cheer: "🎉"

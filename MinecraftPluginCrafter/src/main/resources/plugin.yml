@@ -1,0 +1,387 @@
+name: ClanPlugin
+version: 1.0.0
+main: com.minecraft.clanplugin.ClanPlugin
+api-version: 1.16
+description: A plugin for creating and managing player clans with advanced features
+commands:
+  clan:
+    description: Main command for clan management
+    usage: /<command> [create|join|leave|info|invite|kick|promote|demote|sethome|home|list|ally|unally|enemy|unenemy|color|armor|nametag|gui|territory|economy|war|level|achievements|skills|reputation|map|help]
+    aliases: [c]
+  c:
+    description: Send a message to your clan's chat
+    usage: /<command> <message>
+  territory:
+    description: Commands for territory management
+    usage: /<command> [map|dynamicmap|info|claim|unclaim|list]
+    permission: clan.territory
+  economy:
+    description: Commands for clan economy management
+    usage: /<command> [balance|deposit|withdraw|transfer|tax|collect]
+    permission: clan.economy
+  war:
+    description: Commands for clan war management
+    usage: /<command> [declare|status|surrender|stats|leaderboard]
+    permission: clan.war
+  level:
+    description: Commands for clan leveling and progression
+    usage: /<command> [info|benefits|progress]
+    permission: clan.level
+  achievements:
+    description: Commands for clan achievements
+    usage: /<command> [list|info|progress]
+    permission: clan.achievements
+  skills:
+    description: Commands for clan member skills
+    usage: /<command> [list|info|upgrade|tree|specialize|reset]
+    permission: clan.skills
+  reputation:
+    description: Commands for clan reputation
+    usage: /<command> [info|leaderboard|effects]
+    permission: clan.reputation
+  map:
+    description: Commands for territory mapping
+    usage: /<command> [show|radius|info]
+    permission: clan.map
+  clanemote:
+    description: Commands for clan emote management
+    usage: /<command> [list|add|remove|help]
+    permission: clan.emote
+    aliases: [cemote]
+  clanbanner:
+    description: Commands for clan physical banner items
+    usage: /<command> [basic|shield|flag|standard|wave|emblem]
+    permission: clan.banner.item
+    aliases: [cbanneritem]
+  clanhologram:
+    description: Commands for clan holographic banner management
+    usage: /<command> [create|delete|move|content|style|toggle|list|info|permission|help]
+    permission: clan.banner.hologram
+    aliases: [cbanner, chologram]
+  clanshop:
+    description: Commands for clan shop management
+    usage: /<command> [browse|list|info|price|discount|reload]
+    permission: clan.shop
+    aliases: [cshop]
+  bounty:
+    description: Commands for player bounty system
+    usage: /<command> [place|list|info|top|cancel|help]
+    permission: clan.bounty
+    aliases: [bounties]
+
+permissions:
+  # Core Permissions
+  clan.base:
+    description: Base permission for all clan functionality
+    default: true
+    children:
+      clan.chat: true
+      clan.info: true
+      clan.list: true
+      clan.join: true
+      clan.leave: true
+  
+  # Membership Permissions
+  clan.create:
+    description: Allows creation of a new clan
+    default: true
+  clan.invite:
+    description: Allows inviting players to your clan
+    default: true
+  clan.join:
+    description: Allows joining clans when invited
+    default: true
+  clan.leave:
+    description: Allows leaving your current clan
+    default: true
+  clan.info:
+    description: Allows viewing clan information
+    default: true
+  clan.list:
+    description: Allows listing all clans
+    default: true
+  clan.chat:
+    description: Allows using clan chat
+    default: true
+  
+  # Leadership Permissions (Mostly checked in-code based on clan role)
+  clan.leader:
+    description: Clan leader permissions (membership managed in-game)
+    default: true
+    children:
+      clan.leader.disband: true
+      clan.leader.promote: true
+      clan.leader.demote: true
+      clan.leader.kick: true
+      clan.leader.transfer: true
+      clan.leader.color: true
+      clan.leader.alliances: true
+      clan.leader.enemies: true
+  clan.leader.disband:
+    description: Allows disbanding your clan
+    default: true
+  clan.leader.promote:
+    description: Allows promoting clan members
+    default: true
+  clan.leader.demote:
+    description: Allows demoting clan officers
+    default: true
+  clan.leader.kick:
+    description: Allows kicking members from your clan
+    default: true
+  clan.leader.transfer:
+    description: Allows transferring clan leadership
+    default: true
+  clan.leader.color:
+    description: Allows changing clan color
+    default: true
+  clan.leader.alliances:
+    description: Allows managing clan alliances
+    default: true
+  clan.leader.enemies:
+    description: Allows declaring clan enemies
+    default: true
+  
+  # Officer Permissions
+  clan.officer:
+    description: Clan officer permissions (membership managed in-game)
+    default: true
+    children:
+      clan.officer.invite: true
+      clan.officer.kick: true
+  clan.officer.invite:
+    description: Allows officers to invite new members
+    default: true
+  clan.officer.kick:
+    description: Allows officers to kick regular members
+    default: true
+  
+  # Feature Permissions
+  clan.territory:
+    description: Allows usage of territory commands
+    default: true
+    children:
+      clan.territory.claim: true
+      clan.territory.unclaim: true
+      clan.territory.info: true
+      clan.territory.list: true
+      clan.territory.map: true
+  clan.territory.claim:
+    description: Allows claiming territory for your clan
+    default: true
+  clan.territory.unclaim:
+    description: Allows unclaiming territory
+    default: true
+  clan.territory.info:
+    description: Allows viewing territory information
+    default: true
+  clan.territory.list:
+    description: Allows listing clan territories
+    default: true
+  clan.territory.map:
+    description: Allows viewing territory maps
+    default: true
+  clan.territory.dynamicmap:
+    description: Allows usage of dynamic territory maps
+    default: true
+  
+  clan.economy:
+    description: Allows usage of economy commands
+    default: true
+    children:
+      clan.economy.balance: true
+      clan.economy.deposit: true
+      clan.economy.withdraw: true
+  clan.economy.balance:
+    description: Allows checking clan balance
+    default: true
+  clan.economy.deposit:
+    description: Allows depositing money to clan bank
+    default: true
+  clan.economy.withdraw:
+    description: Allows withdrawing money from clan bank
+    default: true
+  
+  clan.war:
+    description: Allows usage of war commands
+    default: true
+    children:
+      clan.war.declare: true
+      clan.war.surrender: true
+      clan.war.stats: true
+  clan.war.declare:
+    description: Allows declaring war on other clans
+    default: true
+  clan.war.surrender:
+    description: Allows surrendering in clan wars
+    default: true
+  clan.war.stats:
+    description: Allows viewing war statistics
+    default: true
+  
+  clan.level:
+    description: Allows usage of level commands
+    default: true
+  clan.achievements:
+    description: Allows usage of achievement commands
+    default: true
+  clan.skills:
+    description: Allows usage of skill commands
+    default: true
+  clan.reputation:
+    description: Allows usage of reputation commands
+    default: true
+  clan.map:
+    description: Allows usage of map commands
+    default: true
+  clan.shop:
+    description: Allows usage of shop commands
+    default: true
+    children:
+      clan.shop.browse: true
+      clan.shop.info: true
+      
+  clan.bounty:
+    description: Allows usage of bounty commands
+    default: true
+    children:
+      clan.bounty.place: true
+      clan.bounty.list: true
+      clan.bounty.info: true
+  clan.bounty.place:
+    description: Allows placing bounties on players
+    default: true
+  clan.bounty.list:
+    description: Allows listing bounties
+    default: true
+  clan.bounty.info:
+    description: Allows viewing bounty information
+    default: true
+  clan.bounty.cancel:
+    description: Allows canceling your own bounties
+    default: true
+  
+  # Visual Permissions
+  clan.visual:
+    description: Allows usage of visual clan features
+    default: true
+    children:
+      clan.visual.armor: true
+      clan.visual.nametag: true
+      clan.visual.sidebar: true
+  clan.visual.armor:
+    description: Allows toggling clan-colored armor
+    default: true
+  clan.visual.nametag:
+    description: Allows refreshing clan nametags
+    default: true
+  clan.visual.sidebar:
+    description: Allows toggling clan sidebar display
+    default: true
+  
+  # Emote Permissions
+  clan.emote:
+    description: Allows usage of clan emotes in chat
+    default: true
+    children:
+      clan.emote.use: true
+      clan.emote.create: true
+  clan.emote.use:
+    description: Allows using clan emotes
+    default: true
+  clan.emote.create:
+    description: Allows creating clan emotes
+    default: true
+  
+  # Banner Permissions
+  clan.banner:
+    description: Allows usage of all banner features
+    default: true
+    children:
+      clan.banner.item: true
+      clan.banner.hologram: true
+  clan.banner.item:
+    description: Allows creation of physical clan banner items
+    default: true
+    children:
+      clan.banner.item.basic: true
+      clan.banner.item.shield: true
+      clan.banner.item.flag: true
+      clan.banner.item.standard: true
+  clan.banner.item.basic:
+    description: Allows creating basic banner items
+    default: true
+  clan.banner.item.shield:
+    description: Allows creating banner shields
+    default: true
+  clan.banner.item.flag:
+    description: Allows creating banner flags
+    default: true
+  clan.banner.item.standard:
+    description: Allows creating banner standards
+    default: true
+  
+  clan.banner.hologram:
+    description: Allows management of holographic clan banners
+    default: true
+    children:
+      clan.banner.hologram.create: true
+      clan.banner.hologram.delete: true
+      clan.banner.hologram.edit: true
+      clan.banner.hologram.move: true
+      clan.banner.hologram.style: true
+  clan.banner.hologram.create:
+    description: Allows creating holographic banners
+    default: true
+  clan.banner.hologram.delete:
+    description: Allows deleting holographic banners
+    default: true
+  clan.banner.hologram.edit:
+    description: Allows editing holographic banner content
+    default: true
+  clan.banner.hologram.move:
+    description: Allows moving holographic banners
+    default: true
+  clan.banner.hologram.style:
+    description: Allows changing holographic banner styles
+    default: true
+  
+  # Admin Permissions
+  clan.admin:
+    description: Allows all administrative clan actions
+    default: op
+    children:
+      clan.admin.territory: true
+      clan.admin.economy: true
+      clan.admin.skills: true
+      clan.admin.level: true
+      clan.admin.banner: true
+      clan.admin.manage: true
+      clan.admin.shop: true
+      clan.admin.bounty: true
+  clan.admin.territory:
+    description: Allows usage of territory admin commands
+    default: op
+    children:
+      clan.admin.territory.bypass: true
+  clan.admin.territory.bypass:
+    description: Allows bypassing territory restrictions
+    default: op
+  clan.admin.skills.reset:
+    description: Allows resetting skill trees
+    default: op
+  clan.admin.level:
+    description: Allows modifying clan levels
+    default: op
+  clan.admin.banner:
+    description: Allows managing all banners regardless of clan
+    default: op
+  clan.admin.manage:
+    description: Allows managing any clan regardless of membership
+    default: op
+  clan.admin.shop:
+    description: Allows administrative control of the clan shop
+    default: op
+  clan.admin.bounty:
+    description: Allows administrative control of the bounty system
+    default: op
